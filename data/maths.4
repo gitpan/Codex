@@ -1,0 +1,22 @@
+A1 builtin conditional proof
+A2 builtin proof by induction
+A3 builtin combine
+A4 builtin substitution
+A5 builtin symmetry
+M1 maths a + 0 = a
+M2 maths a + (b + 1) = (a + b) + 1
+M3 maths (a = b) = (a + 1 = b + 1)
+
+1 (M1:a=a + b) (a + b) + 0 = a + b
+2 (A5, M1:a=b) b = b + 0
+3 (A4, 1, 2, 2) (a + b) + 0 = a + (b + 0)
+
+4 scope (a + b) + c = a + (b + c) [
+  5 (A3, 4, M3:a=(a + b) + c,b=a + (b + c)) ((a + b) + c) + 1 = (a + (b + c)) + 1
+  6 (A3, M2:a=a + b,b=c, 5) (a + b) + (c + 1) = (a + (b + c)) + 1
+  7 (A3, 6, M2:a=a,b=b + c) (a + b) + (c + 1) = a + ((b + c) + 1)
+  8 (A5, M2:a=b,b=c) (b + c) + 1 = b + (c + 1)
+  9 (A4, 7, 8, 1) (a + b) + (c + 1) = a + (b + (c + 1))
+]
+10 (A1, 4, 9) ((a + b) + c = a + (b + c)) => ((a + b) + (c + 1) = a + (b + (c + 1)))
+11 (A2, 3, 10) (a + b) + c = a + (b + c)

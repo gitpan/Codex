@@ -1,0 +1,16 @@
+A1 builtin conditional proof
+A2 builtin proof by induction
+A3 builtin substitution
+M1 maths a * 0 = 0
+M2 maths a * (b + 1) = a * b + a
+M3 maths a + 0 = a
+
+1 (M1:a=0) 0 * 0 = 0
+
+2 scope 0 * a = 0 [
+  3 (M2:a=0,b=a) 0 * (a + 1) = 0 * a + 0
+  4 (A3, 3, 2, 1) 0 * (a + 1) = 0 + 0
+  5 (A3, 4, M3:a=0, 1) 0 * (a + 1) = 0
+]
+6 (A1, 2, 5) (0 * a = 0) => (0 * (a + 1) = 0)
+7 (A2, 1, 6) 0 * a = 0

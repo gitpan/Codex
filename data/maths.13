@@ -1,0 +1,19 @@
+A1 builtin combine
+A2 builtin substitution
+A3 builtin conditional proof
+A4 builtin proof by induction
+A5 builtin tautology
+M1 maths (a < b) = (a + 1 < b + 1)
+M2 maths a + 0 = a
+M3 maths a + (b + 1) = (a + b) + 1
+
+1 (A5, a < b) (a < b) = (a < b)
+2 (A2, 1, M2, -2) (a < b) = (a + 0 < b)
+3 (A2, 2, M2:a=b, -2) (a < b) = (a + 0 < b + 0)
+4 scope (a < b) = (a + c < b + c) [
+  5 (A1, 4, M1:a=a + c,b=b + c) (a < b) = ((a + c) + 1 < (b + c) + 1)
+  6 (A2, 5, M3:b=c, -1) (a < b) = (a + (c + 1) < (b + c) + 1)
+  7 (A2, 6, M3:a=b,b=c, -1) (a < b) = (a + (c + 1) < b + (c + 1))
+]
+8 (A3, 4, 7) ((a < b) = (a + c < b + c)) => ((a < b) = (a + (c + 1) < b + (c + 1)))
+9 (A4, 3, 8) (a < b) = (a + c < b + c)

@@ -1,0 +1,8 @@
+#!/usr/bin/perl -w
+use strict;
+use 5.005_54;
+use lib 'lib';
+use Codex;
+my $self = new Codex;
+$self->sh;
+exit 0;

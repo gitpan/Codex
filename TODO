@@ -1,0 +1,35 @@
+Things to be done, approximately in the order I plan to tackle them
+
+Errors: revisit the need for the complex Errors scheme now that the
+main cause of it (Codex::Expr->new) has been redone.
+
+Macros: it should be possible to define new rules to complement the
+builtin rules. As many as possible of the builtin rules should be
+moved out of the core, though some (such as 'conditional proof')
+will probably need to stay. It should only be possible to implement
+a macro that you have proven to be valid.
+
+File update: definitions and proofs should know whether they've
+changed; shell should warn of unsaved changes before exit (perhaps
+even trapping Ctrl-C); shell should support 'save $type' and 'save
+$type $number'.
+
+More flexibility for whitespace in expression parsing (eg to remove
+the artificial distinction between unary and binary minus).
+
+Development of proofs: implement the shell commands necessary to
+develop definitions and proofs.
+
+Sets and quantifiers: implement sets and the universal and existential
+quantifiers, and use them to replace the cavalier builtin hack of
+variable substitution. Rewrite the example proofs to be genuine valid
+proofs. (This step will probably involve substantial changes to the
+core application code.)
+
+Output: implement Tex output.
+
+Backend: make the storage of proofs and definitions separable from
+the rest of the application; implement a database backend option.
+
+Frontend: make the shell interface separable from the rest of the
+application; implement a web front end.

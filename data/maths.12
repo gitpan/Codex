@@ -1,0 +1,14 @@
+A1 builtin combine
+A2 builtin substitution
+A3 builtin conditional proof
+A4 builtin proof by induction
+M1 maths 0 < 1
+M2 maths (a < b) = (a + 1 < b + 1)
+M3 maths 0 + a = a
+
+1 (A2, M1, M3:a=1, -1) 0 < 0 + 1
+2 scope a < a + 1 [
+  3 (A1, M2:b=a + 1, 2) (a + 1) < (a + 1) + 1
+]
+4 (A3, 2, 3) (a < a + 1) => ((a + 1) < ((a + 1) + 1))
+5 (A4, 1, 4) a < a + 1

@@ -1,0 +1,50 @@
+Welcome to the Maths Codex, a work in progress.
+
+Synopsis
+
+The purpose of this application is (eventually) to aid in the development
+of rigorous mathematical proofs. This release, version 0.01, falls a long
+way short of that ideal: the 'TODO' file will give an indication of what
+I believe is still required.
+
+Requirements
+
+the distribution file, Codex-0.01.tar.gz
+perl version 5.005_54 or later
+(a ReadLine package such as Term::ReadLine::Perl or Term::ReadLine::Gnu
+is also recommended)
+
+Installation
+
+Unpack the distribution file. Edit the shebang line of the program 'msh'
+if necessary to point to the executable of an appropriate version of perl.
+
+Running
+
+./msh
+
+License
+
+This code is in the public domain: you may do what you like with it,
+including selling it. I'd prefer you not to say you wrote it, but you
+have the right to do even that.
+
+Description
+
+What the current release can do is to read in definitions files and
+proofs (such as the examples supplied), test them for correctness, and
+list how it would output what it has parsed. To try it out, unpack the
+distribution file, move to the directory it unpacked to, and run the
+program 'msh' in that directory.
+
+I won't be adding extensive documentation any time soon, so the point
+of first resort should be the perl source for any further information
+about capabilities and methods. Similarly, I don't recommend sending
+patches against this version: the code is changing to rapidly at this
+time for patches to be very relevant. Feel free to send suggestions
+about directions to take and ways of getting there.
+
+Enjoy,
+
+Hugo van der Sanden, 29th January 1999
+hv@crypt0.demon.co.uk

@@ -1,0 +1,53 @@
+builtin operator and
+builtin operator implies
+builtin operator equals
+operator range(a, b, c) a <= b <= c
+operator isless(a, b) a < b
+operator ismore(a, b) a > b
+operator islesseq(a, b) a <= b
+operator ismoreeq(a, b) a >= b
+operator plus(a, b) a + b
+operator minus(a, b) a - b
+operator times(a, b) a * b
+operator power(a, b) a ^ b
+operator uminus(a) -a
+function sum(a, b, c)
+function prod(a, b, c)
+
+axiom a + 0 = a
+axiom a + (b + 1) = (a + b) + 1
+axiom (a = b) = (a + 1 = b + 1)
+lemma 1 0 + a = a
+lemma 2 a + b = b + a
+lemma 3 (a = b) = (a + c = b + c)
+lemma 4 (a + b) + c = a + (b + c)
+
+axiom a * 0 = 0
+axiom a * (b + 1) = a * b + a
+lemma 5 0 * a = 0
+lemma 6 a * b = b * a
+lemma 7 (a = b) => (a * c = b * c)
+lemma 8 a * (b + c) = a * b + a * c
+lemma 9 (a * b) * c = a * (b * c)
+lemma 10 a * 1 = a
+lemma 11 1 * a = a
+
+axiom 0 < 1
+axiom (a < b & b < c) => (a < c)
+axiom (a < b) = (a + 1 < b + 1)
+axiom (a < b) = (b > a)
+lemma 12 a < a + 1
+lemma 13 (a < b) = (a + c < b + c)
+lemma 14 (a < b) => (a * (c + 1) < b * (c + 1))
+
+axiom a - a = 0
+axiom (a - b) + 1 = (a + 1) - b
+axiom (a = b) = (a - 1 = b - 1)
+axiom 0 - b = -b
+
+axiom a ^ 0 = 1
+axiom a ^ b = (a ^ (b - 1)) * a
+axiom sum(i, 1 <= i <= 0, f(i)) = 0
+axiom sum(i, a <= i <= b, f(i)) = sum(i, a <= i <= b - 1, f(i)) + f(b)
+axiom prod(i, 1 <= i <= 0, f(i)) = 1
+axiom prod(i, a <= i <= b, f(i)) = prod(i, a <= i <= b - 1, f(i)) * f(b)

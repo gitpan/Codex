@@ -1,0 +1,6 @@
+A1 builtin combine
+M1 maths a * b = b * a
+M2 maths a * 1 = a
+
+1 (M1:a=1,b=a) 1 * a = a * 1
+2 (A1, 1, M2) 1 * a = a

@@ -1,0 +1,17 @@
+A1 builtin conditional proof
+A2 builtin proof by induction
+A3 builtin combine
+M1 maths a + 0 = a
+M2 maths a + (b + 1) = (a + b) + 1
+M3 maths (a = b) = (a + 1 = b + 1)
+
+1 (M1:a=0) 0 + 0 = 0
+
+2 scope 0 + a = a [
+  3 (A3, 2, M3:a=0 + a,b=a) (0 + a) + 1 = a + 1
+  4 (M2:a=0,b=a) 0 + (a + 1) = (0 + a) + 1
+  5 (A3, 4, 3) 0 + (a + 1) = a + 1
+]
+
+6 (A1, 2, 5) (0 + a = a) => (0 + (a + 1) = a + 1)
+7 (A2, 1, 6) 0 + a = a

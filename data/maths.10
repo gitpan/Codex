@@ -1,0 +1,10 @@
+A1 builtin combine
+A2 builtin substitution
+M1 maths 0 + a = a
+M2 maths a * 0 = 0
+M3 maths a * (b + 1) = a * b + a
+
+1 (M3:b=0) a * (0 + 1) = a * 0 + a
+2 (A2, 1, M1:a=1, 1) a * 1 = a * 0 + a
+3 (A2, 2, M2, 1) a * 1 = 0 + a
+4 (A1, 3, M1) a * 1 = a

@@ -1,0 +1,36 @@
+A1 builtin modus ponens
+A2 builtin substitution
+A3 builtin conditional proof
+A4 builtin proof by induction
+A5 builtin combine
+A6 builtin conjunction
+M1 maths (a < b & b < c) => (a < c)
+M2 maths (a < b) = (a + c < b + c)
+M3 maths a * 1 = a
+M4 maths a * (b + 1) = a * b + a
+M5 maths 0 + a = a
+M6 maths a + b = b + a
+
+1 scope a < b [
+  2 (A2, 1, M3, -1) a * 1 < b
+  3 (A2, 2, M3:a=b, -1) a * 1 < b * 1
+  4 (A2, 3, M5:a=1, -1) a * (0 + 1) < b * 1
+  5 (A2, 4, M5:a=1, -2) a * (0 + 1) < b * (0 + 1)
+]
+6 (A3, 1, 5) (a < b) => (a * (0 + 1) < b * (0 + 1))
+7 scope (a < b) => (a * (c + 1) < b * (c + 1)) [
+  8 scope a < b [
+    9 (A1, 7, 8) a * (c + 1) < b * (c + 1)
+    10 (A5, 9, M2:a=a * (c + 1),b=b * (c + 1),c=a) (a * (c + 1)) + a < (b * (c + 1)) + a
+    11 (A2, 10, M4:b=c + 1, -1) a * ((c + 1) + 1) < (b * (c + 1)) + a
+    12 (A5, 8, M2:c=b * (c + 1)) a + b * (c + 1) < b + b * (c + 1)
+    13 (A2, 12, M6:b=b * (c + 1), 1) b * (c + 1) + a < b + b * (c + 1)
+    14 (A2, 13, M6:a=b,b=b * (c + 1), 1) b * (c + 1) + a < b * (c + 1) + b
+    15 (A6, 11, 14) (a * ((c + 1) + 1) < b * (c + 1) + a) & (b * (c + 1) + a < b * (c + 1) + b)
+    16 (A1, M1:a=a * ((c + 1) + 1),b=b * (c + 1) + a,c=b * (c + 1) + b, 15) a * ((c + 1) + 1) < b * (c + 1) + b
+    17 (A2, 16, M4:a=b,b=c + 1, -1) a * ((c + 1) + 1) < b * ((c + 1) + 1)
+  ]
+  18 (A3, 8, 17) (a < b) => (a * ((c + 1) + 1) < b * ((c + 1) + 1))
+]
+19 (A3, 7, 18) ((a < b) => (a * (c + 1) < b * (c + 1))) => ((a < b) => (a * ((c + 1) + 1) < b * ((c + 1) + 1)))
+20 (A4, 6, 19) (a < b) => (a * (c + 1) < b * (c + 1))

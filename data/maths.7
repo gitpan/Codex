@@ -1,0 +1,28 @@
+A1 builtin conditional proof
+A2 builtin proof by induction
+A3 builtin modus ponens
+A4 builtin combine
+A5 builtin substitution
+M1 maths a * 0 = 0
+M2 maths a * (b + 1) = a * b + a
+M3 maths 0 + a = a
+M4 maths (a = b) = (a + c = b + c)
+
+1 scope a = b [
+  2 (M1:a=b) b * 0 = 0
+  3 (A4, M1, 2) a * 0 = b * 0
+]
+4 (A1, 1, 3) (a = b) => (a * 0 = b * 0)
+
+5 scope (a = b) => (a * c = b * c) [
+  6 scope a = b [
+    7 (A3, 5, 6) a * c = b * c
+    8 (A4, 7, M4:a=a * c,b=b * c,c=a) a * c + a = b * c + a
+    9 (A5, 8, 6, 3) a * c + a = b * c + b
+    10 (A4, M2:b=c, 9) a * (c + 1) = b * c + b
+    11 (A4, 10, M2:a=b,b=c) a * (c + 1) = b * (c + 1)
+  ]
+  12 (A1, 6, 11) (a = b) => (a * (c + 1) = b * (c + 1))
+]
+13 (A1, 5, 12) ((a = b) => (a * c = b * c)) => ((a = b) => (a * (c + 1) = b * (c + 1)))
+14 (A2, 4, 13) (a = b) => (a * c = b * c)
